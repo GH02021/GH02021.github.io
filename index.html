@@ -8,10 +8,10 @@
     :root{
       --accent: #1e90ff;
       --muted: #666;
-      --bg: #f7f8fa;
+      --bg: #f3f6fb;
       --card: #ffffff;
-      --max-width: 900px;
-      --radius: 8px;
+      --max-width: min(90vw, 1200px);
+      --radius: 10px;
       --gap: 16px;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       color: #111;
@@ -25,62 +25,74 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
+    /* Full-width tab bar */
+    .tabs{
+      width:100%;
+      display:flex;
+      gap:0;
+      background: #f9fbff;
+      border-bottom: 1px solid #dce3ee;
+      padding: 10px 20px;
+      align-items:center;
+      justify-content:center;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    input[type="radio"]{ display:none; }
+
+    .tab{
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight:600;
+      color:var(--muted);
+      border-bottom: 3px solid transparent;
+      margin: 0 6px;
+      border-radius: 6px 6px 0 0;
+      transition: 0.2s ease;
+    }
+
+    .tab:hover{
+      background:#eef3ff;
+      color:#222;
+    }
+
+    input:checked + label.tab{
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      background:#eef5ff;
+    }
+
+    /* Centered content container */
     .container{
       max-width: var(--max-width);
-      margin: 28px auto;
+      margin: 20px auto;
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: 0 6px 18px rgba(20,20,30,0.06);
       overflow: hidden;
     }
 
-    /* Tab bar */
-    .tabs{
-      display:flex;
-      gap:0;
-      background: #fff;
-      border-bottom: 1px solid #e6e6e6;
-      padding: 8px 12px;
-      align-items:center;
-    }
-
-    input[type="radio"]{ display:none; }
-
-    .tab{
-      padding: 10px 16px;
-      cursor: pointer;
-      font-weight:600;
-      color:var(--muted);
-      border-bottom: 3px solid transparent;
-      margin-right: 6px;
-      border-radius: 6px 6px 0 0;
-    }
-
-    .tab:hover{ background:#f2f4f7; color:#222; }
-
-    input:checked + label.tab{
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
     .content{
       display:none;
-      padding: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.99));
+      padding: 20px 28px;
+      background: #fafbff;
+      border-left: 3px solid var(--accent);
     }
 
-    #tab1:checked ~ #content1,
-    #tab2:checked ~ #content2,
-    #tab3:checked ~ #content3,
-    #tab4:checked ~ #content4,
-    #tab5:checked ~ #content5 {
+    #tab1:checked ~ .container #content1,
+    #tab2:checked ~ .container #content2,
+    #tab3:checked ~ .container #content3,
+    #tab4:checked ~ .container #content4,
+    #tab5:checked ~ .container #content5 {
       display:block;
     }
 
     .profile{
       display:flex;
       gap: 20px;
-      align-items:center;
+      align-items:flex-start;
       flex-wrap:wrap;
     }
 
@@ -90,47 +102,47 @@
 
     .profile h1{
       margin:0 0 6px 0;
-      font-size:1.6rem;
-      letter-spacing: -0.2px;
+      font-size:1.8rem;
+      letter-spacing: -0.3px;
     }
 
     .profile .links{
       color:var(--muted);
-      font-size:0.95rem;
+      font-size:1rem;
     }
 
     .avatar{
-      width:120px;
-      height:120px;
+      width:110px;
+      height:110px;
       border-radius:12px;
       object-fit:cover;
       background:#ddd;
-      flex:0 0 120px;
+      flex:0 0 110px;
       box-shadow: 0 4px 12px rgba(20,20,30,0.06);
     }
 
     .section-title{
       margin:0 0 12px 0;
-      font-size:1.1rem;
+      font-size:1.2rem;
       color:#111;
-      border-bottom:1px solid #eee;
+      border-bottom:1px solid #e3e7ef;
       padding-bottom:8px;
     }
 
     .item{
       display:flex;
       justify-content:space-between;
-      gap: 12px;
-      margin: 12px 0;
+      gap: 10px;
+      margin: 10px 0;
       align-items:flex-start;
     }
 
     .item .left{
-      flex:1 1 60%;
+      flex:1 1 65%;
     }
 
     .item .right{
-      flex:0 0 160px;
+      flex:0 0 150px;
       text-align:right;
       color:var(--muted);
       font-weight:600;
@@ -138,7 +150,7 @@
 
     .item h4{
       margin:0 0 6px 0;
-      font-size:1rem;
+      font-size:1.05rem;
     }
 
     .item .sub{
@@ -154,54 +166,50 @@
 
     ul.bullets li{
       margin:6px 0;
-      line-height:1.4;
-      font-size:0.98rem;
+      line-height:1.45;
+      font-size:1rem;
     }
 
     .skills{
       display:flex;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
     }
 
     .skill-pill{
-      background:#f2f6fb;
+      background:#eef5ff;
       color: #0b66c3;
-      padding:8px 10px;
+      padding:8px 12px;
       border-radius:999px;
       font-weight:600;
       font-size:0.9rem;
     }
 
-    .project{
-      margin-top:8px;
-    }
-
     @media (max-width:640px){
       .item .right{ text-align:left; }
-      .profile{ align-items:flex-start; }
-      .avatar{ width:96px; height:96px; }
+      .avatar{ width:90px; height:90px; }
     }
   </style>
 </head>
 <body>
+  <input type="radio" id="tab1" name="tabs" checked> 
+  <label class="tab" for="tab1">About</label> 
+  
+  <input type="radio" id="tab2" name="tabs"> 
+  <label class="tab" for="tab2">Education</label> 
+  
+  <input type="radio" id="tab3" name="tabs"> 
+  <label class="tab" for="tab3">Experience</label> 
+  
+  <input type="radio" id="tab4" name="tabs"> 
+  <label class="tab" for="tab4">Skills</label> 
+  
+  <input type="radio" id="tab5" name="tabs"> 
+  <label class="tab" for="tab5">Projects</label> 
+  
+  <div class="tabs"></div>
+  
   <main class="container">
-    <div class="tab-wrapper">
-          <input type="radio" id="tab1" name="tabs" checked>
-    <input type="radio" id="tab2" name="tabs">
-    <input type="radio" id="tab3" name="tabs">
-    <input type="radio" id="tab4" name="tabs">
-    <input type="radio" id="tab5" name="tabs">
-
-    <!-- Tab bar -->
-    <div class="tabs" role="tablist" aria-label="Resume sections">
-      <label class="tab" for="tab1">About</label>
-      <label class="tab" for="tab2">Education</label>
-      <label class="tab" for="tab3">Experience</label>
-      <label class="tab" for="tab4">Skills</label>
-      <label class="tab" for="tab5">Projects</label>
-    </div>
-
     <!-- About -->
     <section id="content1" class="content">
       <div class="profile">
@@ -340,6 +348,7 @@
   </main>
 </body>
 </html>
+
 
 
 
