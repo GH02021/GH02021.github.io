@@ -44,7 +44,7 @@
       align-items:center;
     }
 
-    .tabs input[type="radio"]{ display:none; }
+    input[type="radio"]{ display:none; }
 
     .tab{
       padding: 10px 16px;
@@ -58,20 +58,17 @@
 
     .tab:hover{ background:#f2f4f7; color:#222; }
 
-    /* active tab style via adjacent selector */
     input:checked + label.tab{
       color: var(--accent);
       border-bottom-color: var(--accent);
     }
 
-    /* Content area */
     .content{
       display:none;
       padding: 24px;
       background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.99));
     }
 
-    /* Show content when corresponding radio is checked */
     #tab1:checked ~ #content1,
     #tab2:checked ~ #content2,
     #tab3:checked ~ #content3,
@@ -80,7 +77,6 @@
       display:block;
     }
 
-    /* Header / About */
     .profile{
       display:flex;
       gap: 20px;
@@ -113,7 +109,6 @@
       box-shadow: 0 4px 12px rgba(20,20,30,0.06);
     }
 
-    /* Section headings */
     .section-title{
       margin:0 0 12px 0;
       font-size:1.1rem;
@@ -122,7 +117,6 @@
       padding-bottom:8px;
     }
 
-    /* Experience / Education layout */
     .item{
       display:flex;
       justify-content:space-between;
@@ -164,7 +158,6 @@
       font-size:0.98rem;
     }
 
-    /* Skills grid */
     .skills{
       display:flex;
       gap:12px;
@@ -180,12 +173,10 @@
       font-size:0.9rem;
     }
 
-    /* Project card */
     .project{
       margin-top:8px;
     }
 
-    /* Responsive */
     @media (max-width:640px){
       .item .right{ text-align:left; }
       .profile{ align-items:flex-start; }
@@ -195,26 +186,25 @@
 </head>
 <body>
   <main class="container">
+
+    <!-- FIXED: Inputs moved ABOVE the tab bar -->
+    <input type="radio" id="tab1" name="tabs" checked>
+    <input type="radio" id="tab2" name="tabs">
+    <input type="radio" id="tab3" name="tabs">
+    <input type="radio" id="tab4" name="tabs">
+    <input type="radio" id="tab5" name="tabs">
+
     <!-- Tab bar -->
     <div class="tabs" role="tablist" aria-label="Resume sections">
-      <input type="radio" id="tab1" name="tabs" checked>
       <label class="tab" for="tab1">About</label>
-
-      <input type="radio" id="tab2" name="tabs">
       <label class="tab" for="tab2">Education</label>
-
-      <input type="radio" id="tab3" name="tabs">
       <label class="tab" for="tab3">Experience</label>
-
-      <input type="radio" id="tab4" name="tabs">
       <label class="tab" for="tab4">Skills</label>
-
-      <input type="radio" id="tab5" name="tabs">
       <label class="tab" for="tab5">Projects</label>
     </div>
 
     <!-- About -->
-    <section id="content1" class="content" aria-labelledby="tab1">
+    <section id="content1" class="content">
       <div class="profile">
         <img class="avatar" src="image/Me.jpg" alt="Hung (Johnny) Tien Van photo" />
         <div class="meta">
@@ -232,7 +222,7 @@
     </section>
 
     <!-- Education -->
-    <section id="content2" class="content" aria-labelledby="tab2">
+    <section id="content2" class="content">
       <h3 class="section-title">Education</h3>
 
       <div class="item">
@@ -247,7 +237,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="content3" class="content" aria-labelledby="tab3">
+    <section id="content3" class="content">
       <h3 class="section-title">Experience & Activities</h3>
 
       <div class="item">
@@ -290,7 +280,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="content4" class="content" aria-labelledby="tab4">
+    <section id="content4" class="content">
       <h3 class="section-title">Skills & Technologies</h3>
 
       <div style="margin-bottom:12px;">
@@ -332,7 +322,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="content5" class="content" aria-labelledby="tab5">
+    <section id="content5" class="content">
       <h3 class="section-title">Personal Projects</h3>
 
       <div class="project">
@@ -346,6 +336,7 @@
         </ul>
       </div>
     </section>
+
   </main>
 </body>
 </html>
