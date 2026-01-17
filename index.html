@@ -58,11 +58,15 @@
       color:#222;
     }
 
-    input:checked + label.tab{
+    input:checked ~ .tabs label.tab[for="tab1"], 
+    #tab1:checked ~ .tabs label[for="tab1"], 
+    #tab2:checked ~ .tabs label[for="tab2"], 
+    #tab3:checked ~ .tabs label[for="tab3"], 
+    #tab4:checked ~ .tabs label[for="tab4"], 
+    #tab5:checked ~ .tabs label[for="tab5"]{ 
       color: var(--accent); 
-      border-bottom-color: transparent; 
       background:#e3efff; 
-      box-shadow: 0 2px 6px rgba(15, 76, 129, 0.18);
+      box-shadow: 0 2px 6px rgba(15, 76, 129, 0.18); 
     }
 
     /* Centered content container */
@@ -346,6 +350,7 @@
   </main>
 </body>
 </html>
+
 
 
 
