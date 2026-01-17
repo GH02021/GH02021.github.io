@@ -1,283 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My Personal Website</title>
-    <style>
-      body {
-        /*background-image: url("Image/Background2.jpg");*/
-        background: aqua;
-        animation-duration: 7s;
-        animation-name: background;
-        animation-iteration-count: infinite;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hung (Johnny) Tien Van — Resume</title>
+  <style>
+    :root{
+      --accent: #1e90ff;
+      --muted: #666;
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --max-width: 900px;
+      --radius: 8px;
+      --gap: 16px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #111;
+    }
 
-      @keyframes background {
-        0% {
-          background-color: aqua;
-        }
-        25% {
-          background-color: lightgrey;
-        }
-        50% {
-          background-color: lightsalmon;
-        }
-        100% {
-          background-color: lightgreen;
-        }
-      }
+    html,body{
+      height:100%;
+      margin:0;
+      background: var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-      img {
-        display: block;
-        width: 20%;
-        height: 20%;
-        border-radius: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        object-fit: cover;
-      }
+    .container{
+      max-width: var(--max-width);
+      margin: 28px auto;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 18px rgba(20,20,30,0.06);
+      overflow: hidden;
+    }
 
-      h1 {
-        margin-left: 540px;
-      }
+    /* Tab bar */
+    .tabs{
+      display:flex;
+      gap:0;
+      background: #fff;
+      border-bottom: 1px solid #e6e6e6;
+      padding: 8px 12px;
+      align-items:center;
+    }
 
-      h3 {
-        margin-left: 480px;
-      }
+    .tabs input[type="radio"]{ display:none; }
 
-      h4 {
-        margin-bottom: -5px;
-      }
+    .tab{
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight:600;
+      color:var(--muted);
+      border-bottom: 3px solid transparent;
+      margin-right: 6px;
+      border-radius: 6px 6px 0 0;
+    }
 
-      .Body {
-        font-size: large;
-      }
+    .tab:hover{ background:#f2f4f7; color:#222; }
 
-      .Date {
-        text-align: right;
-        font-size: large;
-        font-weight: bold;
-      }
-    </style>
-  </head>
+    /* active tab style via adjacent selector */
+    input:checked + label.tab{
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
 
-  <body>
-    <!--Header and Image-->
-    <h1><u>Hung (Johnny) Tien Van Profile</u></h1>
-    <h3>
-      Foothill Ranch | CA 92610 | (714)-310-4224 |
-      <a href="https://www.linkedin.com/in/hung-van-610664210" target="_blank"
-        >LinkedIn Profile</a
-      >
-      |
-      <a href="mailto:Johnny.Van0708@gmail.com" target="_blank">Email</a>
-    </h3>
-    <img width="400" src="Me.jpg" alt="My Image" />
-    <p></p>
-    <br />
+    /* Content area */
+    .content{
+      display:none;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.99));
+    }
 
-    <!--Education-->
-    <h4 class="Body"><u>Education</u></h4>
-    <p class="Body">
-      California State University, Long Beach - 1250 Bellflower Blvd, Long
-      Beach, CA 90840 <br />
-      Graduation Date: June 2024 <br />
-      Certificate: Bachelor of Science <br />
-      Classes: Introduction to Computer Science (I, II, and III), Computer
-      Organization and Machine Language, Computer Organization and Assembly
-      Language, Data Structures, Python Programming, Introduction to Java,
-      Computing Application System, Discrete Structure, Programming Probability,
-      Stats Computing, Algorithms, Database Fundamentals, Intro to Computer
-      Security Principles, Intro to Numerical Analysis, and Intro to Software
-      Engineering.
-      <br />
-      GPA: 3.76 / 4.00 <br /><br /><br />
-    </p>
+    /* Show content when corresponding radio is checked */
+    #tab1:checked ~ #content1,
+    #tab2:checked ~ #content2,
+    #tab3:checked ~ #content3,
+    #tab4:checked ~ #content4,
+    #tab5:checked ~ #content5 {
+      display:block;
+    }
 
-    <!--Experiences and Activities-->
-    <h4 class="Body"><u>Experiences and Activities</u></h4>
-    <p class="Body">
-      CSULB Cybersecurity Club<span style="float: right">
-        October 2022-Ongoing</span
-      >
-      <br />
-      - Learn about cybersecurity (ie. basic of cybersecurity, ethical
-      principles, etc.) to prepare myself for the Western Regional Collegiate Cyber
-      Defense Competition (WRCCDC) via club meetings and supplemented with
-      TryHackMe.
-      <br />
-      - TryHackMe is an online platform for learning about cybersecurity. Each
-      topic has a difficulty rating and recommended prerequisite topics to learn
-      about and the modules showed lectures before giving us a virtual machine
-      to practice the concept on.
-      <br />
-      - Participate in WRCCDC against other colleges as a blue team (defend
-      against attacks) where we have one hour to familiarize ourselves with the
-      given network & information systems and augment them before the red team
-      (competition faculties) attack.
-      <br />
-      - We keep track of privileges of certain users and see if an
-      injection attack had occurred (indicated by a change in access
-      control/unauthorized access). Additionally, we report those
-      attacks in a PDF form, noting the time of the attack, what was the damage,
-      and who reported the incident (among many other things).
-      <br />
-      <br />
-    </p>
+    /* Header / About */
+    .profile{
+      display:flex;
+      gap: 20px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
 
-    <p class="Body">
-      CSULB Google Developer Student Clubs<span style="float: right">
-        September 2022-Ongoing</span
-      >
-      <br />
-      - Participate in group projects to design websites that the GDSC can
-      showcase in club fairs to attract members.
-      <br />
-      - For my project, I worked on the home page that showed the basic
-      summaries of what GDSC does (more detailed information would be on
-      webpages that my teammates designed).
-      <br />
-      - I also worked on the “Why Join Us?” webpage, where the background
-      needed to be a colored background that switched to a specific color at
-      specific intervals (4 seconds per color) and kept it on repeat.
-      <br />
-      - Implementing a drop-down menu, which was not taught at club meetings,
-      required me to search up how to implement it and I “connected” the menu to
-      the other webpages (once they were done) so that when a user clicks on an
-      option, it would take them to the corresponding webpage for more
-      information.
-      <br />
-      <br />
-    </p>
+    .profile .meta{
+      flex:1 1 320px;
+    }
 
-    <p class="Body">
-      85 Degree Cafe<span style="float: right">June 2021-August 2021</span>
-      <br />
-      - Interact with customers and answer their questions about products
-      (particularly, whether certain products are in stock).
-      <br />
-      - Using the cashier to calculate payments, as well as taking beverage
-      orders so that the baristas can start making those orders.
-      <br />
-      - Additionally, the cashier handles online orders by requesting others to
-      package the requested products beforehand and handing them to the delivery
-      person when they arrive; in some cases, certain products need to be stored
-      in a freezer inside of the kitchen.
-      <br />
-      - Restock products for the cashiers to get for the customers and tongs and
-      trays for the customers to hygienically select products.
-      <br />
-      - Package products for the customers when certain items are getting low in
-      number and for the cashiers due to pickup orders. <br /><br /><br />
-    </p>
+    .profile h1{
+      margin:0 0 6px 0;
+      font-size:1.6rem;
+      letter-spacing: -0.2px;
+    }
 
-    <!--Awards, Achievements, & Projects-->
-    <h4 class="Body"><u>Awards and Achievements</u></h4>
-    <p class="Body">
-      - Ranked 16th in WRCCDC.<br />
-      - GDSC Project Collaborations.<br />
-      - California State University, Long Beach’s Dean’s Lists (2021 & 2022).<br /><br /><br />
-    </p>
+    .profile .links{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
 
-    <!--Skills and Abilities-->
-    <h4 class="Body"><u>Skills and Abilities</u></h4>
-    <p class="Body">
-      C++
-      <br />
-      - Used in a personal project where I had to store book information in a
-      data structure to practice linked lists.
-      <br />
-      - I started out with multiple arrays (parallel arrays) that correspond to
-      a single aspect of a book (i.e ISBN) with predefined size and I kept track
-      of the arrays with indices; there were four operations: Add, Delete,
-      Modify, & List All.
-      <br />
-      - I then transitioned to a dynamic array, allowing the user to set the
-      size of the arrays, but everything else remained untouched.
-      <br />
-      - Afterward, I traded in the parallel arrays for a single array of Book
-      objects; the four operations were slightly changed since I needed to add,
-      delete, modify, & view objects inside of one array, rather than primitive
-      data type from multiple arrays.
-      <br />
-      - Finally, I transitioned to linked list, with each node representing a
-      book & containing a reference to the location of the next book (array
-      index were no longer necessary); the operations were changed to match that
-      of linked list.
-      <br />
-      <br />
-    </p>
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:12px;
+      object-fit:cover;
+      background:#ddd;
+      flex:0 0 120px;
+      box-shadow: 0 4px 12px rgba(20,20,30,0.06);
+    }
 
-    <p class="Body">
-      Python
-      <br />
-      - There are many shortcuts in Python that allow easy management of lists
-      and their contents, so it’s the most compatible language to perfect
-      sorting algorithms.
-      <br />
-      - I implemented the bubble sort & insertion sort, two of the most basic
-      sorting algorithms since they are iterative algorithms.
-      <br />
-      - Then I implemented recursive and divide-and-conquer sorting algorithms
-      (quick sort & merge sort).
-      <br />
-      - Merge sort, in particular, was where Python’s list operations shined
-      because it involved breaking down the original array into subarrays and
-      inserting items from the subarrays back into the original array, so
-      appending & removing elements from them became much easier to manage.
-      <br />
-      <br />
-    </p>
+    /* Section headings */
+    .section-title{
+      margin:0 0 12px 0;
+      font-size:1.1rem;
+      color:#111;
+      border-bottom:1px solid #eee;
+      padding-bottom:8px;
+    }
 
-    <p class="Body">
-      Java
-      <br />
-      - Similar to the personal project with C++, I attempted to do a program
-      where I can add, delete, modify, & list objects (in this case, personal &
-      professional contacts) in an array; this time, I was focusing on
-      practicing inheritance & error checking.
-      <br />
-      - Each contact has a name, email, & phone number with its “children”
-      having (for personal) relationship and (for professional) company name &
-      occupation title as additional attributes.
-      <br />
-      - I asked if the created contact was personal or professional and asked
-      for the corresponding additional attributes. Thanks to Java, I can insert
-      the “child” into an array of the “parent”, or Contact.
-      <br />
-      - This was my first project where I implemented the try-catch block to not
-      only catch exceptions, but also printed out what the error message was via
-      “print()” and put the block inside of a while statement to allow the user
-      to input again.
-      <br />
-      - I also learned how to throw an exception using if-statements,
-      particularly InputMismatch for input validation.
-      <br />
-      <br />
-    </p>
+    /* Experience / Education layout */
+    .item{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 12px 0;
+      align-items:flex-start;
+    }
 
-    <p class="Body">
-      HTML/CSS
-      <br />
-      - See the CSULB Google Developer Student Club (GDSC) under Experiences &
-      Activities.
-      <br />
-      <br />
-    </p>
+    .item .left{
+      flex:1 1 60%;
+    }
 
-    <p class="Body">
-      Git Bash
-      <br />
-      - For all of the projects mentioned above, I used Git Bash to keep track
-      of different versions of the projects; if I make a mistake, then I can
-      just use an older version and continue on there instead of re-editing the
-      erroneous versions.
-      <br />
-      - Personally, I preferred creating the repository & branches on the GitHub
-      website and cloning them from GitHub.
-      <br />
-      - Merge (branches), Push, Pull, Show (commits), Add, & Commit were the
-      only commands that I needed.
-      <br />
-    </p>
-  </body>
+    .item .right{
+      flex:0 0 160px;
+      text-align:right;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .item h4{
+      margin:0 0 6px 0;
+      font-size:1rem;
+    }
+
+    .item .sub{
+      margin:0 0 8px 0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    ul.bullets{
+      margin:6px 0 0 18px;
+      padding:0;
+    }
+
+    ul.bullets li{
+      margin:6px 0;
+      line-height:1.4;
+      font-size:0.98rem;
+    }
+
+    /* Skills grid */
+    .skills{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .skill-pill{
+      background:#f2f6fb;
+      color: #0b66c3;
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:0.9rem;
+    }
+
+    /* Project card */
+    .project{
+      margin-top:8px;
+    }
+
+    /* Responsive */
+    @media (max-width:640px){
+      .item .right{ text-align:left; }
+      .profile{ align-items:flex-start; }
+      .avatar{ width:96px; height:96px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <!-- Tab bar -->
+    <div class="tabs" role="tablist" aria-label="Resume sections">
+      <input type="radio" id="tab1" name="tabs" checked>
+      <label class="tab" for="tab1">About</label>
+
+      <input type="radio" id="tab2" name="tabs">
+      <label class="tab" for="tab2">Education</label>
+
+      <input type="radio" id="tab3" name="tabs">
+      <label class="tab" for="tab3">Experience</label>
+
+      <input type="radio" id="tab4" name="tabs">
+      <label class="tab" for="tab4">Skills</label>
+
+      <input type="radio" id="tab5" name="tabs">
+      <label class="tab" for="tab5">Projects</label>
+    </div>
+
+    <!-- About -->
+    <section id="content1" class="content" aria-labelledby="tab1">
+      <div class="profile">
+        <img class="avatar" src="image/Me.jpg" alt="Hung (Johnny) Tien Van photo" />
+        <div class="meta">
+          <h1>Hung (Johnny) Tien Van</h1>
+          <div class="links">
+            <a href="https://www.linkedin.com/in/hung-van-610664210" target="_blank" rel="noopener">linkedin.com/in/hung-van-610664210</a>
+            &nbsp;|&nbsp;
+            <a href="mailto:Johnny.Van0708@gmail.com">Johnny.Van0708@gmail.com</a>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);line-height:1.4;">
+            Computer Science student with hands-on experience building web frontends and cloud-backed applications. Strong practical knowledge of Blazor, .NET, and Azure; collaborative team member experienced with Agile workflows, GitHub, and Jira.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="content2" class="content" aria-labelledby="tab2">
+      <h3 class="section-title">Education</h3>
+
+      <div class="item">
+        <div class="left">
+          <h4>California State University, Long Beach</h4>
+          <div class="sub">Bachelor of Science, Computer Science — May 2025</div>
+          <div style="color:var(--muted);font-size:0.95rem;">Master of Science, Computer Science — expected May 2027</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:0.95rem;">Honors: Dean's List</div>
+        </div>
+        <div class="right">Long Beach, CA</div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="content3" class="content" aria-labelledby="tab3">
+      <h3 class="section-title">Experience & Activities</h3>
+
+      <div class="item">
+        <div class="left">
+          <h4>EbizCharge — Software Developer (Frontend)</h4>
+          <div class="sub">Rebuilt virtual terminal and contributed to payment gateway frontend</div>
+          <ul class="bullets">
+            <li>Recreated a virtual terminal UI using Blazor, Telerik components, and Bootstrap.</li>
+            <li>Integrated frontend with backend APIs and implemented HTTP methods for data management.</li>
+            <li>Collaborated with UI/UX and QA; tracked work in Jira and submitted code via GitHub.</li>
+            <li>Participated in daily scrum meetings and delivered features on schedule.</li>
+          </ul>
+        </div>
+        <div class="right">Jun 2024 — Present</div>
+      </div>
+
+      <div class="item">
+        <div class="left">
+          <h4>CSULB Cybersecurity Club — Member</h4>
+          <div class="sub">Blue team participant for WRCCDC</div>
+          <ul class="bullets">
+            <li>Prepared for Western Regional Collegiate Cyber Defense Competition using TryHackMe and club workshops.</li>
+            <li>Defended networks during competitions, monitored privileges, detected injections, and documented incidents.</li>
+          </ul>
+        </div>
+        <div class="right">Oct 2022 — Present</div>
+      </div>
+
+      <div class="item">
+        <div class="left">
+          <h4>CSULB Google Developer Student Clubs — Web Contributor</h4>
+          <div class="sub">Website design and front-end development</div>
+          <ul class="bullets">
+            <li>Built home and informational pages; implemented navigation and dropdowns to connect site sections.</li>
+            <li>Implemented interactive UI components and collaborated with teammates to prepare showcase-ready pages.</li>
+          </ul>
+        </div>
+        <div class="right">Sep 2022 — Present</div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="content4" class="content" aria-labelledby="tab4">
+      <h3 class="section-title">Skills & Technologies</h3>
+
+      <div style="margin-bottom:12px;">
+        <strong>Languages</strong>
+        <div class="skills" style="margin-top:8px;">
+          <span class="skill-pill">C#</span>
+          <span class="skill-pill">HTML</span>
+          <span class="skill-pill">CSS</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">SQL (T-SQL)</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Python</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <strong>Frameworks & Libraries</strong>
+        <div class="skills" style="margin-top:8px;">
+          <span class="skill-pill">.NET Core</span>
+          <span class="skill-pill">Blazor</span>
+          <span class="skill-pill">Telerik (Blazor)</span>
+          <span class="skill-pill">Bootstrap</span>
+          <span class="skill-pill">React</span>
+        </div>
+      </div>
+
+      <div>
+        <strong>Tools & Cloud</strong>
+        <div class="skills" style="margin-top:8px;">
+          <span class="skill-pill">Visual Studio</span>
+          <span class="skill-pill">GitHub</span>
+          <span class="skill-pill">Jira</span>
+          <span class="skill-pill">Azure SQL Database</span>
+          <span class="skill-pill">Azure Storage</span>
+          <span class="skill-pill">Azure App Service</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="content5" class="content" aria-labelledby="tab5">
+      <h3 class="section-title">Personal Projects</h3>
+
+      <div class="project">
+        <h4>Johnny Shopping Cart</h4>
+        <div class="sub">Full-stack shopping cart demo (frontend + APIs + cloud)</div>
+        <ul class="bullets">
+          <li>Frontend built with Blazor and Telerik components; styling with Bootstrap and custom CSS.</li>
+          <li>Backend APIs implemented with .NET Core; Azure SQL used for item data storage.</li>
+          <li>Images stored in Azure Storage; app deployed to Azure App Service.</li>
+          <li>Features: add item (name, price, image), display items in a grid, and basic purchase flow demo.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
