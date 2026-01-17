@@ -29,40 +29,29 @@
     .tabs{
       width:100%;
       display:flex;
-      gap:0;
+      justify-content:center;
+      align-items:center;
+      gap: 4px;
       background: #f9fbff;
       border-bottom: 1px solid #dce3ee;
-      padding: 10px 20px;
-      align-items:center;
-      justify-content:center;
-      position:sticky;
-      top:0;
-      z-index:10;
+      padding: 10px 0;
+      margin-top: 8px;
     }
 
     input[type="radio"]{ display:none; }
 
     .tab{
-      padding: 12px 20px;
+      padding: 12px 22px;
       cursor: pointer;
       font-weight:600;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color:var(--muted);
       border-bottom: 3px solid transparent;
-      margin: 0 6px;
+      margin: 0 10px;
       border-radius: 6px 6px 0 0;
       transition: 0.2s ease;
-
-      display:flex; gap:0; background: #f9fbff; 
-      border-bottom: 1px solid #dce3ee; 
-      padding: 8px 18px; 
-      align-items:center; 
-      justify-content:center; 
-      width: fit-content;
-      margin: 10px auto 0; 
-      border-radius: 999px; 
-      position: static; 
     }
+
 
     .tab:hover{
       background:#eef3ff;
@@ -360,6 +349,7 @@
   </main>
 </body>
 </html>
+
 
 
 
