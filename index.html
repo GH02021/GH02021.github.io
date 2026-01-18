@@ -199,6 +199,13 @@
       font-size:0.9rem;
     }
 
+    .game-image{
+      width: 200px; 
+      height: 350px;  
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #1e90ff;      
+    }
+    
     @media (max-width:640px){
       .item .right{ text-align:left; }
       .avatar{ width:90px; height:90px; }
@@ -349,14 +356,19 @@
       <h3 class="section-title">Personal Projects</h3>
 
       <div class="project">
-        <h4>Johnny Shopping Cart</h4>
-        <div class="sub">Full-stack shopping cart demo (frontend + APIs + cloud)</div>
+        <h4>Turn-Based Game</h4>
+        <div class="sub">Select three characters to fight six enemies (frontend + APIs + cloud)</div>
         <ul class="bullets">
           <li>Frontend built with Blazor and Telerik components; styling with Bootstrap and custom CSS.</li>
           <li>Backend APIs implemented with .NET Core; Azure SQL used for item data storage.</li>
           <li>Images stored in Azure Storage; app deployed to Azure App Service.</li>
-          <li>Features: add item (name, price, image), display items in a grid, and basic purchase flow demo.</li>
         </ul>
+        <div>
+          <img alt="Game Demo" src="image/Game1.png"/>
+          <img alt="Game Demo" src="image/Game2.png"/>
+          <img alt="Game Demo" src="image/Game3.png"/>
+          <img alt="Game Demo" src="image/Game4.png"/>
+        </div>
       </div>
     </section>
 
@@ -364,6 +376,7 @@
   </main>
 </body>
 </html>
+
 
 
 
