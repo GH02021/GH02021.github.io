@@ -199,19 +199,55 @@
       font-size:0.9rem;
     }
 
-    .game-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      gap: 16px;
-      justify-content: center;
-      margin-top: 16px;
+    .image-carousel {
+      text-align: center;
+      margin-top: 24px;
     }
     
-    .game-image{
-      width: 350px; 
-      height: 200px;  
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      border: 1px solid #1e90ff;      
+    .viewer {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .slide {
+      display: none;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      border: 1px solid #1e90ff;
+    }
+    
+    /* Show selected image */
+    #img1:checked ~ .viewer #slide1,
+    #img2:checked ~ .viewer #slide2,
+    #img3:checked ~ .viewer #slide3,
+    #img4:checked ~ .viewer #slide4 {
+      display: block;
+    }
+    
+    .controls {
+      margin-top: 12px;
+    }
+    
+    .controls label {
+      cursor: pointer;
+      padding: 8px 12px;
+      margin: 0 4px;
+      background: #eef3ff;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #1e90ff;
+      transition: 0.2s ease;
+    }
+    
+    .controls label:hover {
+      background: #dbe9ff;
     }
     
     @media (max-width:640px){
@@ -371,11 +407,33 @@
           <li>Backend APIs implemented with .NET Core; Azure SQL used for item data storage.</li>
           <li>Images stored in Azure Storage; app deployed to Azure App Service.</li>
         </ul>
-        <div class="game-gallery">
-          <img alt="Game Demo" src="image/Game1.png" class="game-image"/>
-          <img alt="Game Demo" src="image/Game2.png" class="game-image"/>
-          <img alt="Game Demo" src="image/Game3.png" class="game-image"/>
-          <img alt="Game Demo" src="image/Game4.png" class="game-image"/>
+        <div class="image-carousel">
+          <input type="radio" name="carousel" id="img1" checked>
+          <input type="radio" name="carousel" id="img2">
+          <input type="radio" name="carousel" id="img3">
+          <input type="radio" name="carousel" id="img4">
+        
+          <div class="viewer">
+            <div class="slide" id="slide1">
+              <img src="image/Game1.png" alt="Game 1">
+            </div>
+            <div class="slide" id="slide2">
+              <img src="image/Game2.png" alt="Game 2">
+            </div>
+            <div class="slide" id="slide3">
+              <img src="image/Game3.png" alt="Game 3">
+            </div>
+            <div class="slide" id="slide4">
+              <img src="image/Game4.png" alt="Game 4">
+            </div>
+          </div>
+        
+          <div class="controls">
+            <label for="img1">1</label>
+            <label for="img2">2</label>
+            <label for="img3">3</label>
+            <label for="img4">4</label>
+          </div>
         </div>
       </div>
     </section>
@@ -384,6 +442,7 @@
   </main>
 </body>
 </html>
+
 
 
 
