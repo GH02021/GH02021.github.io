@@ -199,9 +199,17 @@
       font-size:0.9rem;
     }
 
+    .game-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 16px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    
     .game-image{
-      width: 200px; 
-      height: 350px;  
+      width: 350px; 
+      height: 200px;  
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       border: 1px solid #1e90ff;      
     }
@@ -363,11 +371,11 @@
           <li>Backend APIs implemented with .NET Core; Azure SQL used for item data storage.</li>
           <li>Images stored in Azure Storage; app deployed to Azure App Service.</li>
         </ul>
-        <div>
-          <img alt="Game Demo" src="image/Game1.png"/>
-          <img alt="Game Demo" src="image/Game2.png"/>
-          <img alt="Game Demo" src="image/Game3.png"/>
-          <img alt="Game Demo" src="image/Game4.png"/>
+        <div class="game-gallery">
+          <img alt="Game Demo" src="image/Game1.png" class="game-image"/>
+          <img alt="Game Demo" src="image/Game2.png" class="game-image"/>
+          <img alt="Game Demo" src="image/Game3.png" class="game-image"/>
+          <img alt="Game Demo" src="image/Game4.png" class="game-image"/>
         </div>
       </div>
     </section>
@@ -376,6 +384,7 @@
   </main>
 </body>
 </html>
+
 
 
 
